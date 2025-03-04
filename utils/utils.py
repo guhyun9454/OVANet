@@ -1,8 +1,6 @@
 from models.basenet import *
 import os
 import torch
-import neptune
-import socket
 
 
 def get_model_mme(net, num_class=13, temp=0.05, top=False, norm=True):

@@ -2,7 +2,7 @@ import torch
 from torch import nn
 import torchvision.transforms as transforms
 import torch.optim as optim
-from apex import amp, optimizers
+# from apex import amp, optimizers
 from data_loader.get_loader import get_loader, get_loader_label
 from .utils import get_model_mme
 from models.basenet import ResClassifier_MME
@@ -119,9 +119,9 @@ def get_models(kwargs):
                        momentum=conf.train.sgd_momentum, weight_decay=0.0005,
                        nesterov=True)
 
-    [G, C1, C2], [opt_g, opt_c] = amp.initialize([G, C1, C2],
-                                                  [opt_g, opt_c],
-                                                  opt_level="O1")
+    # [G, C1, C2], [opt_g, opt_c] = amp.initialize([G, C1, C2],
+    #                                               [opt_g, opt_c],
+    #                                               opt_level="O1")
     G = nn.DataParallel(G)
     C1 = nn.DataParallel(C1)
     C2 = nn.DataParallel(C2)
